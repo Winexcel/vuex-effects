@@ -1,24 +1,48 @@
-# main
+# vuex-effects
 
-## Project setup
-```
-npm install
-```
+Effects is a side effect model for Vuex. Effects use subscribers to provide new sources of actions such as network requests, web socket messages and time-based events.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- [Basic example](https://qk441m1kmq.codesandbox.io/)
 
-### Compiles and minifies for production
-```
-npm run build
+## Installation
+
+```bash
+$ npm install vuex-effects
 ```
 
-### Lints and fixes files
-```
-npm run lint
+## Usage
+
+Import Plugin
+```js
+import VuexEffects from "vuex-effects";
+
+Vue.use(VuexEffects(store));
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Use this in component
+
+```js
+import { mapActions, mapState } from 'vuex';
+
+export default {
+  name: 'App',
+  effects: {
+    actions: {
+      getTasksList: {
+        after(action, state) {
+          localStorage.setItem('tasksList', JSON.stringify(this.tasksList));
+        }
+      }
+    }
+  },
+  computed: {
+    ...mapState(['tasksList']),
+  },
+  mounted() {
+    this.getTasksList();
+  },
+  methods: {
+    ...mapActions(['getTasksList']),
+  },
+};
+```

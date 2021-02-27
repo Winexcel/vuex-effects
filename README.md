@@ -159,7 +159,7 @@ By default, new mutations effects is added to the end of the chain, so it will b
 Let's look at this example effects:
 ```js
 effects: {
-    actions: {
+    mutations: {
         getTasksList: {
             prepend: true, // this will add your effects to the beginning of the chain
             handler(mutation, state) {

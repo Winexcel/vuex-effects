@@ -137,9 +137,25 @@ effects: {
     }
 }
 ```
+For using it with namespaced state
+```js
+effects: {
+    actions: {
+        'tasks/getTasksList': { // this is an analogy for mapActions argument
+            prepend: true, // this will add your effects to the beginning of the chain
+            handler(action, state) { // same as before()
+                // this code invokes BEFORE vuex action has finished 
+                localStorage.setItem('tasksListAfter', JSON.stringify(this.tasksList));
+            }
+        }
+    }
+}
+```
 
 ### Mutations
 Mutations effects is called after every mutation and receives the mutation descriptor and post-mutation state as arguments.
+Mutations doesn't have `before` and `after` methods unlike Actions, only the `handler` method is avalable in object notation.
+
 
 Let's look at this example effects:
 ```js

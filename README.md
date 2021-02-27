@@ -2,7 +2,7 @@
 
 Effects is a side effect model for Vuex. Effects use subscribers to provide new sources of actions such as network requests, web socket messages and time-based events.
 
-- [Basic example](https://qk441m1kmq.codesandbox.io/)
+- [Basic example](https://codesandbox.io/s/vuex-effects-1-92hqr)
 
 ## Installation
 
@@ -73,7 +73,7 @@ import tasksEffects from '@/store/effets/tasksEffects';
 Vue.use(VuexEffects(store, [tasksEffects])); 
 // ...
 ```
-## Effect Options
+## Effects Options
 ### Actions
 By default action effects is called before action dispatched if you pass your effect like a function and receives the action descriptor and current store state as arguments.
 
